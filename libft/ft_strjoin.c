@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhouston <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sconstab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/30 07:16:54 by jhouston          #+#    #+#             */
-/*   Updated: 2019/07/12 07:02:18 by jhouston         ###   ########.fr       */
+/*   Created: 2019/05/30 09:31:00 by sconstab          #+#    #+#             */
+/*   Updated: 2019/07/15 10:54:08 by sconstab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char *str;
+	size_t	tlen;
+	char	*ns;
 
-	if (s1 == NULL || s2 == NULL)
+	if (!s1 || !s2)
 		return (NULL);
-	if (!(str = ft_strnew(ft_strlen(s1) + ft_strlen(s2))))
+	tlen = ft_strlen(s1) + ft_strlen(s2);
+	if (!(ns = ft_strnew(tlen)))
 		return (NULL);
-	ft_strcat(str, s1);
-	ft_strcat(str, s2);
-	return (str);
+	ft_strcat(ns, s1);
+	ft_strcat(ns, s2);
+	return (ns);
 }

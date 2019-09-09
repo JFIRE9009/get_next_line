@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhouston <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sconstab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/05 13:16:18 by jhouston          #+#    #+#             */
-/*   Updated: 2019/06/28 14:51:26 by jhouston         ###   ########.fr       */
+/*   Created: 2019/05/28 07:43:39 by sconstab          #+#    #+#             */
+/*   Updated: 2019/06/19 17:36:40 by sconstab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,27 @@
 
 int	ft_atoi(const char *str)
 {
-	int i;
-	int j;
-	int res;
+	size_t	i;
+	int		res;
+	int		n;
 
+	i = 0;
+	res = 0;
+	n = 1;
 	if (ft_strcmp(str, "99999999999999999999999999") == 0)
 		return (-1);
 	if (ft_strcmp(str, "-99999999999999999999999999") == 0)
 		return (0);
-	j = 1;
-	i = 0;
-	res = 0;
-	while ((str[i] >= '\t' && str[i] <= '\r') || str[i] == ' ')
+	while ((str[i] <= '\r' && str[i] >= '\t') || str[i] == ' ')
 		i++;
 	if (str[i] == '-')
-		j = -1;
+		n = -1;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
 	while (str[i] && str[i] >= '0' && str[i] <= '9')
 	{
-		res = res * 10 + (str[i] - 48);
+		res = res * 10 + str[i] - '0';
 		i++;
 	}
-	res = res * j;
-	return (res);
+	return (res * n);
 }

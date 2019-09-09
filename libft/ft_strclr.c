@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strclr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhouston <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sconstab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/22 14:02:20 by jhouston          #+#    #+#             */
-/*   Updated: 2019/06/07 07:01:33 by jhouston         ###   ########.fr       */
+/*   Created: 2019/05/29 16:10:59 by sconstab          #+#    #+#             */
+/*   Updated: 2019/06/05 15:05:26 by sconstab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_strclr(char *s)
 {
-	while (s != NULL && *s)
-	{
+	if (!s)
+		return ((void)NULL);
+	while (*s)
 		*s++ = '\0';
-	}
 }

@@ -3,31 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhouston <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sconstab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/30 07:48:45 by jhouston          #+#    #+#             */
-/*   Updated: 2019/07/08 15:43:35 by jhouston         ###   ########.fr       */
+/*   Created: 2019/05/30 09:44:06 by sconstab          #+#    #+#             */
+/*   Updated: 2019/06/06 14:01:22 by sconstab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(const char *s)
+char	*ft_strtrim(char const *s)
 {
-	unsigned int i;
-	unsigned int j;
-	unsigned int l;
+	size_t	i;
+	size_t	e;
+	size_t	it;
 
-	j = 0;
-	if (s == NULL)
+	i = 0;
+	if (!s)
 		return (NULL);
-	while (s[j] != '\0' && (s[j] == ' ' || s[j] == '\n' || s[j] == '\t'))
-		j++;
-	i = ft_strlen(s);
-	while (j < i && (s[i - 1] == ' ' || s[i - 1] == '\n' || s[i - 1] == '\t'))
-		i--;
-	if (j == i)
+	while (s[i] && (s[i] == ' ' || s[i] == '\n' || s[i] == '\t'))
+		i++;
+	e = ft_strlen(s);
+	while (i < e && (s[e - 1] == ' ' || s[e - 1] == '\n' || s[e - 1] == '\t'))
+		e--;
+	if (e == i)
 		return (ft_strnew(1));
-	l = i - j;
-	return (ft_strsub(s, j, l));
+	it = e - i;
+	return (ft_strsub(s, i, it));
 }

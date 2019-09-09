@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhouston <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sconstab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/27 06:23:17 by jhouston          #+#    #+#             */
-/*   Updated: 2019/06/13 08:56:14 by jhouston         ###   ########.fr       */
+/*   Created: 2019/05/27 14:12:51 by sconstab          #+#    #+#             */
+/*   Updated: 2019/06/08 10:56:45 by sconstab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 char	*ft_strnstr(const char *h, const char *n, size_t len)
 {
-	size_t i;
-	size_t j;
+	size_t	i;
+	size_t	j;
 
-	if (ft_strlen(n) == 0)
-		return ((char *)h);
 	i = 0;
-	while (h[i] != '\0' && i < len)
+	if (n[0] == '\0')
+		return ((char *)h);
+	while (h[i] && i < len)
 	{
 		j = 0;
-		while (n[j] == h[i + j])
+		while (h[i + j] == n[j])
 		{
-			if ((i + j) == len)
+			if (i + j >= len)
 				break ;
 			if (n[j + 1] == '\0')
-				return ((char *)h + i);
+				return ((char *)&h[i]);
 			j++;
 		}
 		i++;
