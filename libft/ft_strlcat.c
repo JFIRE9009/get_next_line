@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sconstab <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jhouston <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/27 10:09:25 by sconstab          #+#    #+#             */
-/*   Updated: 2019/05/27 10:39:43 by sconstab         ###   ########.fr       */
+/*   Created: 2019/05/21 16:20:09 by jhouston          #+#    #+#             */
+/*   Updated: 2019/06/26 17:04:24 by jhouston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,21 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t i;
-	size_t d;
-	size_t s;
+	size_t	i;
+	size_t	j;
+	size_t	k;
 
-	i = 0;
-	d = ft_strlen(dst);
-	s = ft_strlen(src);
-	if (dstsize <= d)
-		return (s + dstsize);
-	while (src[i] && i + d < dstsize - 1)
+	i = ft_strlen(src);
+	j = 0;
+	k = 0;
+	while (dst[j] && j < dstsize)
+		j++;
+	while (j + k + 1 < dstsize && src[k])
 	{
-		dst[i + d] = src[i];
-		i++;
+		dst[j + k] = src[k];
+		k++;
 	}
-	dst[i + d] = '\0';
-	return (d + s);
+	if (j + k < dstsize)
+		dst[j + k] = '\0';
+	return (i + j);
 }

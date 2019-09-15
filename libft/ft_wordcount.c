@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_wordcount.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sconstab <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jhouston <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/04 13:44:53 by sconstab          #+#    #+#             */
-/*   Updated: 2019/06/25 15:32:32 by sconstab         ###   ########.fr       */
+/*   Created: 2019/09/15 15:42:18 by jhouston          #+#    #+#             */
+/*   Updated: 2019/09/15 15:42:20 by jhouston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ size_t	ft_wordcount(char const *s, char c)
 
 	i = 0;
 	j = 0;
-	if (s[0] != c)
+	if (s[i] != c && s[i])
 		j++;
 	while (s[i])
 	{

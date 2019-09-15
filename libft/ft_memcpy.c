@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sconstab <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jhouston <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/21 14:36:24 by sconstab          #+#    #+#             */
-/*   Updated: 2019/06/04 15:46:51 by sconstab         ###   ########.fr       */
+/*   Created: 2019/05/23 09:19:18 by jhouston          #+#    #+#             */
+/*   Updated: 2019/06/26 16:40:01 by jhouston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,21 @@
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	unsigned char	*csrc;
-	unsigned char	*cdst;
+	unsigned char	*s;
+	unsigned char	*d;
+	size_t			i;
 
-	if (src == NULL && dst == NULL)
+	i = 0;
+	s = (unsigned char *)src;
+	d = (unsigned char *)dst;
+	if (n == 0)
+		return (dst);
+	if (d == NULL && s == NULL)
 		return (NULL);
-	csrc = (unsigned char *)src;
-	cdst = (unsigned char *)dst;
-	while (n--)
-		*cdst++ = *csrc++;
+	while (i < n)
+	{
+		d[i] = s[i];
+		i++;
+	}
 	return (dst);
 }

@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strntrim.c                                      :+:      :+:    :+:   */
+/*   ft_strjoin_free.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sconstab <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jhouston <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/31 13:55:30 by sconstab          #+#    #+#             */
-/*   Updated: 2019/06/06 14:00:44 by sconstab         ###   ########.fr       */
+/*   Created: 2019/09/15 15:40:21 by jhouston          #+#    #+#             */
+/*   Updated: 2019/09/15 15:40:54 by jhouston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strntrim(char const *s, char c)
+char	*ft_strjoin_free(char *s1, char *s2)
 {
 	size_t	i;
-	size_t	j;
-	size_t	it;
-	char	*ns;
+	char	*str;
 
 	i = 0;
-	j = 0;
-	it = ft_strlen(s) - 1;
-	ns = ft_strnew(it + 1);
-	if (s == NULL)
+	if (!s1 || !(str = (char *)malloc(sizeof(char)\
+					* ((ft_strlen(s1) + ft_strlen(s2) + 1)))))
 		return (NULL);
-	while (s[i] == c)
+	while (s1[i] != '\0')
+	{
+		str[i] = s1[i];
 		i++;
-	while (s[it] == c)
-		it--;
-	it++;
-	while (i < it && s[i])
-		ns[j++] = s[i++];
-	return (ns);
+	}
+	while (*s2)
+	{
+		str[i] = *s2;
+		s2++;
+		i++;
+	}
+	str[i] = '\0';
+	free(s1);
+	return (str);
 }
